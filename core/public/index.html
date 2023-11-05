@@ -1,0 +1,32 @@
+<html>
+
+<body>
+    <form action="/generate" method="post" enctype="multipart/form-data">
+        <label for="template">Template</label>
+        <input type="file" id="template" name="template">
+
+        <input type="submit" value="Enviar">
+    </form>
+
+    <script>
+        const form = document.querySelector("form");
+
+        form.addEventListener("submit", e => {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+            formData.append("json", JSON.stringify({ title: "Hello", "sub-title": "world", text: "Hello world my friends" }))
+
+            fetch("http://localhost:3000/generate", {
+                method: "POST",
+                body: formData
+            })
+                .then(console.log)
+                .catch(console.error);
+        })
+    </script>
+</body>
+
+
+
+</html>
