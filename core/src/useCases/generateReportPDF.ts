@@ -1,64 +1,58 @@
 
 
 import type { Request, Response } from "express";
-import multer from "multer";
-import path from "node:path";
-import handlebars from "handlebars";
+import { generateHtmlUseCase } from "./generateHtml";
+import { generatePdfUseCase } from "./generatePDF";
 import fs from "node:fs";
+import path from "node:path";
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'tmp/');
-    },
-    filename: function (req, file, cb) {
-        const fileExtension = path.extname(file.originalname);
-        cb(null, Date.now() + '-' + file.fieldname + fileExtension);
-    }
-});
 
 class generateReportPDFUseCase {
     public async execute(req: Request, res: Response) {
-        multer({ storage }).single("template")(req, res, function (err) {
-            // TODO: Tratamento de erro para o upload do arquivo
-            
-            if (err instanceof multer.MulterError) {
-                console.log("multer error");
-                // A Multer error occurred when uploading.
-            } else if (err) {
-                console.log("error");
-                // An unknown error occurred when uploading.
-            }
-
+        try {
             const { file } = req;
             const { json } = req.body;
             const jsonParsed = JSON.parse(json);
+    
+            if (!file) {
+                return res.status(400).json({
+                    message: "Nenhum arquivo de template enviado"
+                });
+            }
 
-            if (!file) return;
+            const htmlFilename = await new generateHtmlUseCase().execute(file, jsonParsed);
+            const htmlPath = path.resolve(process.cwd(), "html", htmlFilename);
 
-            const fileTemplate = fs.readFileSync(file.path, { encoding: "utf-8" });
-            const template = handlebars.compile(fileTemplate);
-            const html = template(jsonParsed);
+            const pdfPath = await new generatePdfUseCase().execute(htmlFilename);
 
-            const outputPath = path.resolve(__dirname, "..", "..", "tmp", "output.html");
-            fs.writeFile(outputPath, html, { encoding: "utf-8" }, (err) => {
-                if (err) {
-                    console.error("Erro ao gravar o template");
-                    console.error(err);
+            res.download(pdfPath);
+            res.end(() => {
 
-                    return;
-                }
+                fs.rm(pdfPath, (err) => {
+                    if (err) {
+                        console.error(err);
+                    }
+                });
+
+                fs.rm(htmlPath, (err) => {
+                    if (err) {
+                        console.error(err);
+                    }
+                });
+
             });
-        });
 
-        return res.status(200).send("ok");
+        } catch (err: any) {
+            
+            console.error(err);
+
+            return res.status(400).json({
+                message: "Houve um erro ao gerar o relatório PDF.",
+                err: err.message,
+            });
+        }
 
     };
-
-
-    public async generateHTMLFile() {
-
-    }
-
 };
 
 export { generateReportPDFUseCase };

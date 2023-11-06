@@ -11,19 +11,32 @@
     <script>
         const form = document.querySelector("form");
 
-        form.addEventListener("submit", e => {
+        form.addEventListener("submit", async e => {
             e.preventDefault();
 
             const formData = new FormData(form);
             formData.append("json", JSON.stringify({ title: "Hello", "sub-title": "world", text: "Hello world my friends" }))
 
-            fetch("http://localhost:3000/generate", {
+            const response = await fetch("http://localhost:3000/generate", {
                 method: "POST",
-                body: formData
-            })
-                .then(console.log)
-                .catch(console.error);
-        })
+                body: formData,
+            });
+            
+            if (response.status === 400) return alert(response.body.message);
+
+            const blob = await response.blob();
+
+            const file = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.download = Date.now() + "-relatório";
+            a.href = file;
+            a.target = "_blank";
+            a.click();
+
+            window.URL.revokeObjectURL(blob);
+            
+            return;
+        });
     </script>
 </body>
 
