@@ -25,8 +25,11 @@ class generateReportPDFUseCase {
 
             const pdfPath = await new generatePdfUseCase().execute(htmlFilename);
 
-            res.download(pdfPath);
-            res.end(() => {
+            res.download(pdfPath, (err) => {
+                if (err) {
+                    console.error(err);
+                    throw new Error("[res.download]> Houve um erro ao enviar o PDF para download");
+                }
 
                 fs.rm(pdfPath, (err) => {
                     if (err) {
@@ -40,11 +43,14 @@ class generateReportPDFUseCase {
                     }
                 });
 
+                fs.rm(file.path, (err) => {
+                    if (err) {
+                        console.error(err);
+                    }
+                });
             });
 
         } catch (err: any) {
-            
-            console.error(err);
 
             return res.status(400).json({
                 message: "Houve um erro ao gerar o relatório PDF.",

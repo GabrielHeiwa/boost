@@ -19,13 +19,6 @@ class generatePdfUseCase {
             const pdfPath = path.resolve(process.cwd(), "pdf", pdfFilename);
             await page.pdf({ path: pdfPath });
 
-            const htmlPath = path.resolve(process.cwd(), "html", htmlFilename);
-            fs.rm(htmlPath, err => {
-                if (err) {
-                    console.error(err);
-                }
-            })
-
             return pdfPath;
 
         } catch (err: any) {
