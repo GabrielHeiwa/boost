@@ -2,10 +2,11 @@
   "name": "core",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/",
   "scripts": {
     "dev": "tsnd --transpile-only --respawn src/",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "preinstall": "tsc --build",
+    "start": "node ."
   },
   "keywords": [],
   "author": "",

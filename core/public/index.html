@@ -30,7 +30,6 @@
             const a = document.createElement("a");
             a.download = Date.now() + "-relatório";
             a.href = file;
-            a.target = "_blank";
             a.click();
 
             window.URL.revokeObjectURL(blob);
