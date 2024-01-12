@@ -2,9 +2,11 @@
 import puppeteer from "puppeteer";
 import { randomUUID } from "crypto";
 import path from "path";
+import fs from "fs";
 
 class generatePdfUseCase {
     public async execute(htmlFilename: string) {
+        const filePath = path.join(__dirname, "..", "..", "html", htmlFilename);
         try {
 
             const browser = await puppeteer.launch({ 
@@ -13,9 +15,8 @@ class generatePdfUseCase {
             });
 
             const page = await browser.newPage();
-            const url = "http://localhost:" + process.env.PORT + "/html/" + htmlFilename;
-
-            await page.goto(url);
+            const html = fs.readFileSync(filePath, { encoding: "utf-8" })
+            await page.setContent(html);
 
             const pdfFilename = randomUUID() + ".pdf";
             const pdfPath = path.resolve(process.cwd(), "pdf", pdfFilename);
@@ -26,6 +27,8 @@ class generatePdfUseCase {
             return pdfPath;
 
         } catch (err: any) {
+            console.log((err));
+            
 
             throw new Error("[generatePDF]> Houve um erro ao gerar o PDF");
         
