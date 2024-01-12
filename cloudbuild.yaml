@@ -1,0 +1,26 @@
+steps:
+# Build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', 
+    '-t', 'gcr.io/$_PROJECT_ID/grendene-bkn-report-app-rh-$_ENV',
+    '-f', 'Dockerfile',
+    '.']
+# Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$_PROJECT_ID/grendene-bkn-report-app-rh-$_ENV']
+# Deploy container image to Cloud Run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', 'grendene-bkn-report-app-rh-$_ENV',
+    '--image', 'gcr.io/$_PROJECT_ID/grendene-bkn-report-app-rh-$_ENV',
+    '--region', 'southamerica-east1',
+    '--platform', 'managed',
+    '--allow-unauthenticated',
+    '--min-instances', '$_INSTANCIAS_MIN', 
+    '--max-instances','$_INSTANCIAS_MAX', 
+    '--memory', '$_MEMORY',
+    '--cpu', '$_CPU',
+    '--concurrency', '$_CONCURRENCY']
+images:
+- gcr.io/$_PROJECT_ID/grendene-bkn-report-app-rh-$_ENV
+
