@@ -3,7 +3,6 @@ import puppeteer from "puppeteer";
 import { randomUUID } from "crypto";
 import path from "path";
 import fs from "fs";
-
 class generatePdfUseCase {
     public async execute(htmlFilename: string) {
         const filePath = path.join(__dirname, "..", "..", "html", htmlFilename);
@@ -15,7 +14,7 @@ class generatePdfUseCase {
             });
 
             const page = await browser.newPage();
-            const html = fs.readFileSync(filePath, { encoding: "utf-8" })
+            const html = fs.readFileSync(filePath, { encoding: "utf-8" });            
             await page.setContent(html);
 
             const pdfFilename = randomUUID() + ".pdf";

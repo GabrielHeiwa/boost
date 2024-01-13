@@ -6,25 +6,25 @@ import { generatePdfUseCase } from "./generatePDF";
 import fs from "node:fs";
 import path from "node:path";
 
-
+const templates = ["vocation-receipt", "paycheck", "revenue-report"];
 class generateReportPDFUseCase {
     public async execute(req: Request, res: Response) {
         try {
-            const { file } = req;
-            const { json } = req.body;
-            const jsonParsed = JSON.parse(json);
-    
-            if (!file) {
+            const { template, data } = req.body;
+            
+            if (!template || !templates.includes(template)) {
                 return res.status(400).json({
-                    message: "Nenhum arquivo de template enviado"
+                    message: "Template inválido"
                 });
             }
-
-            const htmlFilename = await new generateHtmlUseCase().execute(file, jsonParsed);
-            const htmlPath = path.resolve(process.cwd(), "html", htmlFilename);
-
+            
+            const filePath = path.join(__dirname, "..", "..", "templates", `${template}.html`);           
+            const file = fs.readFileSync(filePath, { encoding: "utf-8" });                   
+            const htmlFilename = await new generateHtmlUseCase().execute(file, data);
+            const htmlPath = path.resolve(process.cwd(), "html", htmlFilename);            
             const pdfPath = await new generatePdfUseCase().execute(htmlFilename);
-
+            
+            res.contentType('application/pdf');
             res.download(pdfPath, (err) => {
                 if (err) {
                     console.error(err);
@@ -38,12 +38,6 @@ class generateReportPDFUseCase {
                 });
 
                 fs.rm(htmlPath, (err) => {
-                    if (err) {
-                        console.error(err);
-                    }
-                });
-
-                fs.rm(file.path, (err) => {
                     if (err) {
                         console.error(err);
                     }

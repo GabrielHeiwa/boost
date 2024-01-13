@@ -1,0 +1,453 @@
+<html>
+	<head>
+		<title>Template - Treinamento</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+			crossorigin="anonymous"
+		/>
+		<style>
+			/* Tabela */
+
+			.tableContainer {
+				min-height: 65vh;
+			}
+
+			table {
+				height: 75%;
+				border-collapse: collapse;
+			}
+
+			table th {
+				font-size: 12px;
+			}
+
+			td {
+				font-size: 14.5px;
+			}
+
+			td {
+				border-top: solid 1px white !important;
+			}
+
+			th {
+				border-bottom: solid 1px black !important;
+			}
+
+			th span,
+			td span {
+				padding: 0px 5px 0px 5px;
+			}
+
+			tr {
+				height: 15px !important;
+			}
+
+			.rowLeftAligned {
+				text-align: left;
+			}
+
+			.rowRightAligned {
+				text-align: right;
+			}
+
+			.rowCenterAligned {
+				text-align: center;
+			}
+
+			.invisibleTableRow {
+				height: 100% !important;
+			}
+
+			/* Cabeçalho */
+
+			.header,
+			.table {
+				border: solid 1px black;
+			}
+
+			.noBorderTop {
+				border-bottom: solid 1px transparent !important;
+				padding: 5px 0;
+			}
+
+			.monthYearDiv {
+				font-weight: bold;
+				font-size: 12px;
+				position: absolute;
+				top: 5;
+				background-color: white;
+				padding: 0px 6px 0px 6px;
+			}
+
+			.headerDividingLine {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: 7px;
+			}
+
+			.headerDividingLine span {
+				font-size: 12px;
+				font-weight: bold;
+			}
+
+			.headerRow {
+				display: flex;
+				gap: 20px;
+			}
+
+			.headerDividingLine span {
+				font-size: 12px;
+			}
+
+			.headerRow span {
+				font-size: 14px;
+			}
+
+			.line {
+				display: block;
+				height: 1px;
+				border-bottom: solid 1px black;
+			}
+
+			.firstData {
+				padding-left: 10px;
+			}
+
+			.textBold {
+				font-weight: bold;
+			}
+
+			/* Footer */
+
+			.footerDiv {
+				position: relative;
+				border: solid 1px transparent;
+			}
+
+			.absoluteTitle {
+				width: 100%;
+				position: absolute;
+				top: 2.5;
+				display: flex;
+				gap: 4px;
+			}
+
+			.absoluteTitle div div {
+				font-size: 12px;
+				font-weight: bold;
+				background-color: white;
+				padding: 0px 6px 0px 6px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div>
+			<div class="row">
+				<div style="width: 80%"></div>
+
+				<div style="width: 20%">
+					<div class="monthYearDiv">MÊS/ANO</div>
+				</div>
+			</div>
+
+			<!-- Cabeçalho -->
+			<div class="header noBorderTop mt-3">
+				<div class="headerRow">
+					<div style="width: 80%">
+						<span class="firstData">Demonstrativo de Pagamento de Salário</span>
+					</div>
+					<div style="width: 20%">
+						<span>{{paycheck.month}} / {{paycheck.year}}</span>
+					</div>
+				</div>
+
+				<div class="headerDividingLine">
+					<span
+						class="line"
+						style="width: 10px"
+					></span>
+					<span>EMPRESA</span>
+					<span
+						class="line"
+						style="width: 40%"
+					></span>
+					<span>CNPJ</span>
+					<span
+						class="line"
+						style="width: 28%"
+					></span>
+					<span>LOCAL</span>
+					<span
+						class="line"
+						style="width: 200px"
+					></span>
+				</div>
+
+				<div class="headerRow">
+					<span
+						style="width: 45%"
+						class="firstData"
+						>100 - GRENDENE S/A</span
+					>
+
+					<span style="width: 25%; padding-right: 60">
+						89.850.341/001.60
+					</span>
+
+					<span style="width: 30%">
+						{{paycheck.local}}
+					</span>
+				</div>
+
+				<div class="headerDividingLine">
+					<span
+						class="line"
+						style="width: 15px"
+					></span>
+					<span>CADASTRO</span>
+					<span
+						class="line"
+						style="width: 7%"
+					></span>
+					<span>NOME</span>
+					<span
+						class="line"
+						style="width: 320px"
+					></span>
+					<span style="width: 130px">DATA ADMISSÃO</span>
+					<span
+						class="line"
+						style="width: 40px"
+					></span>
+					<span>CARGO</span>
+					<span
+						class="line"
+						style="width: 120px"
+					></span>
+					<span>CBO</span>
+					<span
+						class="line"
+						style="width: 40px"
+					></span>
+				</div>
+
+				<div class="headerRow">
+					<span
+						style="width: 115px"
+						class="firstData"
+					>
+						{{paycheck.id}}
+					</span>
+
+					<span style="width: 270px">
+						{{paycheck.name}}
+					</span>
+
+					<span style="width: 120px">
+						{{paycheck.hiringDate}}
+					</span>
+
+					<span style="width: 120px">
+						{{paycheck.role}}
+					</span>
+
+					<span style="width: 70px">
+						{{paycheck.cbo}}
+					</span>
+				</div>
+			</div>
+
+			<!-- Tabela -->
+			<div class="tableContainer">
+				<table class="table-bordered table-sm">
+					<thead class="text-center font-bold">
+						<tr>
+							<th
+								class="rowCenterAligned"
+								style="width: 3%"
+							>
+								<span>CÓD.</span>
+							</th>
+							<th
+								class="rowLeftAligned"
+								style="width: 30%"
+							>
+								<span>DESCRIÇÃO</span>
+							</th>
+							<th
+								class="rowRightAligned"
+								style="width: 10%"
+							>
+								<span>QUANTIDADE</span>
+							</th>
+							<th
+								class="rowRightAligned"
+								style="width: 20%"
+							>
+								<span>PROVENTOS</span>
+							</th>
+							<th
+								class="rowRightAligned"
+								style="width: 20%"
+							>
+								<span>DESCONTOS</span>
+							</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						{{<for paycheck.earnings>}}
+							<tr>
+								<td class="rowCenterAligned">{{codeve}}</td>
+								<td>{{deseve}}</td>
+								<td class="rowRightAligned">{{refeve}}</td>
+								<td class="rowRightAligned">{{valeve}}</td>
+								<td class="rowRightAligned"></td>
+							</tr>
+                		{{</for paycheck.earnings>}}
+
+						{{<for paycheck.discounts>}}
+							<tr>
+								<td class="rowCenterAligned">{{codeve}}</td>
+								<td>{{deseve}}</td>
+								<td class="rowRightAligned">{{refeve}}</td>
+								<td class="rowRightAligned"></td>
+								<td class="rowRightAligned">{{valeve}}</td>
+							</tr>
+                		{{</for paycheck.discounts>}}
+
+						<tr class="invisibleTableRow">
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="footerDiv">
+				<div class="absoluteTitle">
+					<div style="width: 104px; margin-left: 15px">
+						<div>SALÁRIO BASE</div>
+					</div>
+
+					<div style="width: 153px; margin-left: 15px">
+						<div>SALÁRIO CONTR. INSS</div>
+					</div>
+
+					<div style="width: 86px; margin-left: 15px">
+						<div>FAIXA IRRF</div>
+					</div>
+
+					<div style="width: 158px; margin-left: 10px">
+						<div>TOTAL DE VENCIMENTOS</div>
+					</div>
+
+					<div style="width: 145px; margin-left: 10px">
+						<div>TOTAL DE DESCONTOS</div>
+					</div>
+				</div>
+
+				<div
+					class="header"
+					style="margin-top: 10px !important; flex: 1"
+				>
+					<div
+						class="headerRow"
+						style="padding-top: 10px"
+					>
+						<span
+							style="width: 105px; text-align: right"
+							class="firstData"
+							>{{paycheck.baseSalary}}</span
+						>
+
+						<span style="width: 155px; text-align: right">
+							{{paycheck.salaryAgainstINSS}}
+						</span>
+						
+						<span style="width: 85px; text-align: right">
+							{{paycheck.IRRFTrack}}
+						</span>
+						
+						<span style="width: 150px; text-align: right">
+							{{paycheck.salariesTotal}}
+						</span>
+						
+						<span style="flex: 1; text-align: right; padding-right: 35px">
+							{{paycheck.discountsTotal}}
+						</span>
+					</div>
+
+					<div class="headerDividingLine">
+						<span
+							class="line"
+							style="width: 60px"
+						></span>
+						<span style="width: 132px">BASE CÁLC. FGTS</span>
+						<span
+							class="line"
+							style="width: 50px"
+						></span>
+						<span style="width: 106px">FGTS DO MÊS</span>
+						<span
+							class="line"
+							style="width: 72px"
+						></span>
+						<span style="width: 155px">BASE CÁLCULO IRRF</span>
+						<span
+							class="line"
+							style="width: 120px"
+						></span>
+						<span style="width: 122px">VALOR LÍQUIDO</span>
+						<span
+							class="line"
+							style="width: 10px"
+						></span>
+					</div>
+
+					<div class="headerRow">
+						<span
+							style="width: 165px; text-align: right"
+							class="firstData"
+							>{{paycheck.FGTSBaseCalc}}</span
+						>
+
+						<span style="width: 120px; text-align: right">
+							{{paycheck.monthlyFGTS}}
+						</span>
+
+						<span style="width: 185px; text-align: right">
+							{{paycheck.IRRFBaseCalc}}
+						</span>
+
+						<span style="flex: 1; text-align: right; padding-right: 20px">
+							{{paycheck.liquidValue}}
+						</span>
+					</div>
+
+					<div class="headerDividingLine">
+						<span
+							class="line"
+							style="width: 100%"
+						></span>
+					</div>
+
+					<div class="mb-4"></div>
+				</div>
+			</div>
+			<script>
+				// const paresTotais = {{romaneio.itens.item}};
+
+				// document.querySelector("td#pares-totais")
+				// .textContent = paresTotais.reduce((prev, curr) => Number(curr.qtd_faturada) + prev, 0)
+			</script>
+		</div>
+	</body>
+</html>

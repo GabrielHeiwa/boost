@@ -40,6 +40,10 @@ RUN apt update -y && apt install -y ca-certificates \
     wget \
     xdg-utils
 
+RUN mkdir -p tmp
+RUN mkdir -p pdf
+RUN mkdir -p html
+
 ENV TZ=America/Sao_Paulo
 ENV ENVIRONMENT=production
 
