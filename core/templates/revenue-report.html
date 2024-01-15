@@ -1,521 +1,509 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<style>
-			@page {
-				height: 297mm;
-				width: 210mm;
-			}
 
-			body {
-				font-family: Arial, Helvetica, sans-serif;
-				font-size: 11px;
-			}
+<head>
+  <style>
+    @page {
+      height: 297mm;
+      width: 210mm;
+    }
 
-			.row {
-				flex: 1;
-				
-				display: flex;
-				flex-direction: row;
-			}
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11px;
+			padding: 16px;
+    }
 
-			.column {
-				display: flex;
-				flex-direction: column;
-			}
+    .row {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+    }
 
-			.center {
-				justify-content: center;
-				align-items: center;
-			}
+    .column {
+      display: flex;
+      flex-direction: column;
+    }
 
-			.valueRow {
-				justify-content: space-between;
-				align-items: center;
-			}
+    .center {
+      justify-content: center;
+      align-items: center;
+    }
 
-			.topic {
-				margin-top: 2mm;
-			}
+    .valueRow {
+      justify-content: space-between;
+      align-items: center;
+    }
 
-			.topicTitle {
-				padding-bottom: 1mm;
-				padding-top: 1mm;
-			}
+    .topic {
+      margin-top: 2mm;
+    }
 
-			.borderTop {
-				border-top: 2px solid black;
-			}
+    .topicTitle {
+      padding-bottom: 1mm;
+      padding-top: 1mm;
+    }
 
-			.borderBottom {
-				border-bottom: 2px solid black;
-			}
+    .borderTop {
+      border-top: 2px solid black;
+    }
 
-			.topicContent {
-				padding-top: 1.5mm;
-				gap: 0.5mm;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="row" style="border: 1px solid black; text-align: center;">
-			<div class="column center" style="width: 15%;">
-				<img style="max-width: 100%;" src="https://www.gov.br/fazenda/pt-br/assuntos/noticias/2013/novembro/brasao-da-republica/@@images/image" alt="bras√£o da rep√∫blica" height="50" width="50">
-			</div>
+    .borderBottom {
+      border-bottom: 2px solid black;
+    }
 
-			<div class="column" style="width: 45%; border-right: 1px solid black; padding-top: 1.5mm; padding-bottom: 1.5mm; justify-content: space-between; align-items: center;">
+    .topicContent {
+      padding-top: 1.5mm;
+      gap: 0.5mm;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="row" style="border: 1px solid black; text-align: center;">
+    <div class="column center" style="width: 15%;">
+      <img style="max-width: 100%;" src="https://www.gov.br/fazenda/pt-br/assuntos/noticias/2013/novembro/brasao-da-republica/@@images/image" alt="bras„o da rep˙blica" height="50" width="50">
+    </div>
+
+    <div class="column" style="width: 45%; border-right: 1px solid black; padding-top: 1.5mm; padding-bottom: 1.5mm; justify-content: space-between; align-items: center;">
+      <div>
+        MINIST…RIO DA FAZENDA
+      </div>
+      <div>
+        Secretaria Da Receita Federal Do Brasil
+      </div>
+      <div>
+        Imposto sobre a Renda da Pessoa FÌsica
+      </div>
+      <div>
+        ExercÌcio de {{anoatual}}
+      </div>
+    </div>
+
+    <div class="column center" style="width: 40%; padding-top: 2mm; padding-bottom: 1.5mm; justify-content: space-between; align-items: center; padding-left: 5mm; padding-right: 5mm;">
+      <div>
+        Comprovante de Rendimento Pagos e de <br> Imposto sobre a Renda Retido na Fonte
+      </div>
+      <div>
+        Ano-Calend·rio de {{ano}}
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align: justify; padding-left: 8mm; padding-right: 8mm; padding-top: 2mm;">
+    Verifique as condiÁıes e o prazo para apresentaÁ„o da DeclaraÁ„o do Imposto sobre a Renda da Pessoa FÌsica para este ano-calend·rio no sÌtio da Secret·ria da Receita Federal do Brasil na Internet, no endereÁo &lt;www.receita.fazenda.gov.br&gt;
+  </div>
+
+  <div class="column topic">
+    <div class="topicTitle borderBottom">
+      1.Fonte Pagadora Pessoa JurÌdica ou Pessoa FÌsica
+    </div>
+
+    <div class="row topicContent">
+      <div class="column" style="width: 23mm; align-items: flex-end; gap: 0.5mm;">
+        <div>
+          CNPJ/CPF:
+        </div>
+        <div>
+          Nome Empr:
+        </div>
+        <div>
+          EndereÁo:
+        </div>
+        <div>
+          Bairro:
+        </div>
+      </div>
+
+      <div class="column" style="width: 60mm; align-items: flex-start; margin-left: 5mm; gap: 0.5mm;">
+        <div>
+          {{cgemp}}
+        </div>
+        <div>
+          {{nomemp}}
+        </div>
+        <div>
+          {{endemp}}
+        </div>
+        <div>
+          {{baiemp}}
+        </div>
+      </div>
+
+      <div class="column" style="width: 50mm; justify-content: space-between; margin-left: 5mm;">
+        <div>
+          Fone: {{fonemp}}
+        </div>
+
+        <div>
+          Cidade: {{cidemp}}
+        </div>
+      </div>
+
+      <div class="column" style="justify-content: flex-end; margin-left: 5mm;">
+        <div>
+          UF: {{ufeemp}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="column topic">
+    <div class="topicTitle borderBottom">
+      2.Pessoa FÌsica Benefici·ria dos Rendimentos
+    </div>
+
+    <div class="column topicContent">
+      <div class="row">
+        Local: {{codloc}}
+      </div>
+
+      <div class="row" style="gap: 20mm;">
+        <div>
+          CPF: {{numcpf}}
+        </div>
+        <div>
+          Cadastro: {{numcad}}
+        </div>
+      </div>
+
+      <div class="row">
+        Benefici·rio: {{nomfun}}
+      </div>
+
+      <div class="row">
+        Natureza do Rendimento: {{natren}}
+      </div>
+    </div>
+  </div>
+
+  <div class="column topic">
+    <div class="topicTitle borderBottom">
+      3.Rendimentos Tribut·veis, DeduÁıes e Imposto Retido na Fonte - VALORES EM REAIS
+    </div>
+
+    <div class="column topicContent">
+      <div class="row valueRow">
+        <div>
+          01 Total dos Rendimentos (inclusive fÈrias)
+        </div>
+        <div>
+          {{rendtrib.totalrend}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          02 ContribuiÁ„o Previdenciaria Oficial
+        </div>
+        <div>
+          {{rendtrib.previdoficial}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          03 ContribuiÁ„o Previd. Complem. p˙blica ou privada e FAPI (Preencher quadro 7)
+        </div>
+        <div>
+          {{rendtrib.previdcomplem}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          04 Pens„o AlimentÌcia (Preencher tambÈm o quadro 7)
+        </div>
+        <div>
+          {{rendtrib.pensalim}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          05 Imposto sobre a Renda Retido na Fonte
+        </div>
+        <div>
+          {{rendtrib.impostofonte}}
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="column topic">
+    <div class="topicTitle borderTop borderBottom">
+      4.Rendimentos Isentos e N„o Tribut·veis
+    </div>
+
+    <div class="column topicContent">
+      <div class="row valueRow">
+        <div>
+          01 Parc. Isenta, Aposent., Reserva, Reforma e Pens„o (65 anos ou +)
+        </div>
+        <div>
+          {{rendisent.parcisenta}}
+        </div>
+      </div>
+      
+      <div class="row valueRow">
+        <div>
+          02 Di·rias e Ajuda de Custo
+        </div>
+        <div>
+          {{rendisent.diarajudcust}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          03 Prov. Pens„o, Aposent, Reforma molestia grave, inval.permanente
+        </div>
+        <div>
+          {{rendisent.provpensao}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          04 Lucro e divid.a partir 1996 pg p/ PJ (Lucro Real, Pres.Arbitr.)
+        </div>
+        <div>
+          {{rendisent.lucrodivid}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          05 Valores SÛcio Microempresa ou Peq.Porte exceto pro labore
+        </div>
+        <div>
+          {{rendisent.valsocmicro}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          06 IndenizaÁıes rescis„o de contrato de trabalho, PDV, Acid. Trabalho
+        </div>
+        <div>
+          {{rendisent.inderesc}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          07 Outros (Especificar)
+        </div>
+        <div>
+          {{rendisent.outros}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="column topic">
+    <div class="topicTitle borderBottom borderTop">
+      5.Rendimentos Sujeitos a TributaÁ„o Exclusiva (Rend. LÌquido)
+    </div>
+
+    <div class="column topicContent">
+      <div class="row valueRow">
+        <div>
+          01 DÈcimo Terceiro Sal·rio
+        </div>
+        <div>
+          {{rendtribexcl.decimterc}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          02 IRRF 13∫ Sal·rio
+        </div>
+        <div>
+          {{rendtribexcl.irrfdecimterc}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="column topic">
+    <div class="topicTitle borderTop borderBottom">
+      6.Rendimentos Recebidos Acumuladamente- Art.12-A da Lei n∫7.713, de 1988 (sujeitos a trib. excl.)
+    </div>
+
+    <div class="column topicContent">
+      <div class="row valueRow">
+        <div>
+          6.1 Numero do Processo: {{rendrecebacu.numproc}}
+        </div>
+        <div>
+          Quantidade de meses:
+        </div>
+        <div>
+          {{rendrecebacu.quantmes}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          Natureza do rendimento: {{rendrecebacu.natrend}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          01 Total dos rendimentos tribut·veis (inclusive fÈrias e 13∫ sal·rio)
+        </div>
+        <div>
+          {{rendrecebacu.totalrendtrib}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          02 Exclus„o: Despesas com a aÁ„o judicial
+        </div>
+        <div>
+          {{rendrecebacu.exclusao}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          03 DeduÁ„o: ContribuiÁ„o previdenci·ria oficial
+        </div>
+        <div>
+          {{rendrecebacu.deducaocontri}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          04 DeduÁ„o: Pens„o alimentÌcia (Preencher tambÈm o quadro 7)
+        </div>
+        <div>
+          {{rendrecebacu.deducaopensalim}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          05 Imposto sobre a renda retido na fonte
+        </div>
+        <div>
+          {{rendrecebacu.impostorend}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          06 Rendimentos isentos de pens„o, proventos de aposentadoria ou reforma por <br> molÈstia grave ou aposentadoria ou reforma por acidente em serviÁo
+        </div>
+        <div>
+          {{rendrecebacu.rendisent}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="column" style="margin-top: 2mm;">
+    <div class="topicTitle borderTop borderBottom">
+      7.InformaÁıes Complementares
+    </div>
+
+    <div class="column topicContent">
+      {{#each infocomplement.benefs}}
+        <div class="row valueRow" style="padding-left: 1mm;">
+          <div>
+            Benefici·rio/CPF Pens„o:
+          </div>
+          <div>
+            {{nomdep}}
+          </div>
+          <div>
+            {{cpfdep}}
+          </div>
+        </div>
+
+        <div>
+          {{#each benef.vals}}
+            <div class="row valueRow" style="padding-left: 3mm;">
+              <div>
+                {{obsval}}
+              </div>
+              <div>
+                {{valpag}}
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      {{/each}}
+
+      <div>
+        {{#if infocomplement.planosaude.deps.length}}
+          <div class="row valueRow">
+            <div>
+              Plano de Sa˙de - Empresarial
+            </div>
+          </div>
+
+          <div class="row valueRow">
+            <div>
+              Operadora: {{infocomplement.planosaude.cgemp}} {{infocomplement.planosaude.nomemp}}
+            </div>
+          </div>
+
+          <div class="column" style="padding-left: 5mm;">
+            {{#each infocomplement.planosaude.deps as |dep|}}
+              <div class="row valueRow">
+                <div style="width: 65%;">
+                  {{dep.cpfdep}} {{dep.nomdep}}
+                </div>
+                <div>
+                  {{dep.nasc}}
+                </div>
+                <div>
+                  {{dep.valpag}}
+                </div>
+              </div>
+            {{/each}}
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+
+  <div class="column topic borderBottom" style="padding-bottom: 1mm;">
+		<div class="topicTitle borderTop borderBottom">
+			8.Respons·vel pelas InformaÁıes
+		</div>
+
+		<div class="topicContent">
+			<div class="row valueRow">
 				<div>
-					MINIST√âRIO DA FAZENDA
+					Nome: GIULIANO FORNAZTER
 				</div>
 				<div>
-					Secretaria Da Receita Federal Do Brasil
+					Data: {{fevereiroultimodia}} Assinatura:
 				</div>
+				<div>?</div>
+				<div>?</div>
+			</div>
+
+			<div class="row valueRow">
 				<div>
-					Imposto sobre a Renda da Pessoa F√≠sica
+					Dispensada a assinatura de acordo com IN RFB 1.215/2011 art. 2.
 				</div>
+			</div>
+
+			<div class="row valueRow">
 				<div>
-					Exerc√≠cio de  {{anoatual}}
-				</div>
-			</div>
-
-			<div class="column center" style="width: 40%; padding-top: 2mm; padding-bottom: 1.5mm; justify-content: space-between; align-items: center; padding-left: 5mm; padding-right: 5mm;">
-				<div>
-					Comprovante de Rendimento Pagos e de <br> Imposto sobre a Renda Retido na Fonte
-				</div>
-				<div>
-					Ano-Calend√°rio de  {{ano}}
+					Aprovado pela IN. RFB n∫ 2.060, de 13 de dezembro de 2021
 				</div>
 			</div>
 		</div>
+	</div>
+</body>
 
-		<div style="text-align: justify; padding-left: 8mm; padding-right: 8mm; padding-top: 2mm;">
-			Verifique as condi√ß√µes e o prazo para apresenta√ß√£o da Declara√ß√£o do Imposto sobre a Renda da Pessoa F√≠sica para este ano-calend√°rio no s√≠tio da Secret√°ria da Receita Federal do Brasil na Internet, no endere√ßo <www.receita.fazenda.gov.br>
-		</div>
-
-		<div class="column topic">
-			<div class="topicTitle borderBottom">
-				1.Fonte Pagadora Pessoa Jur√≠dica ou Pessoa F√≠sica
-			</div>
-
-			<div class="row topicContent">
-				<div class="column" style="width: 23mm; align-items: flex-end; gap: 0.5mm;">
-					<div>
-						CNPJ/CPF:
-					</div>
-					<div>
-						Nome Empr:
-					</div>
-					<div>
-						Endere√ßo:
-					</div>
-					<div>
-						Bairro:
-					</div>
-				</div>
-				
-				<div class="column" style="width: 60mm; align-items: flex-start; margin-left: 5mm; gap: 0.5mm;">
-					<div>
-						{{cgemp}}
-					</div>
-					<div>
-						{{nomemp}}
-					</div>
-					<div>
-						{{endemp}}
-					</div>
-					<div>
-						{{baiemp}}
-					</div>
-				</div>
-
-				<div class="column" style="width: 50mm; justify-content: space-between; margin-left: 5mm;">
-					<div>
-						Fone: {{fonemp}}
-					</div>
-
-					<div>
-						Cidade: {{cidemp}}
-					</div>
-				</div>
-
-				<div class="column" style="justify-content: flex-end; margin-left: 5mm;">
-					<div>
-						UF: {{ufeemp}}
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="column topic">
-			<div class="topicTitle borderBottom">
-				2.Pessoa F√≠sica Benefici√°ria dos Rendimentos
-			</div>
-
-			<div class="column topicContent">
-				<div class="row">
-					Local: {{codloc}}
-				</div>
-
-				<div class="row" style="gap: 20mm;">
-					<div>
-						CPF: {{numcpf}}
-					</div>
-					<div>
-						Cadastro: {{numcad}}
-					</div>
-				</div>
-
-				<div class="row">
-					Benefici√°rio: {{nomfun}}
-				</div>
-
-				<div class="row">
-					Natureza do Rendimento: {{natren}}
-				</div>
-			</div>
-		</div>
-
-		<div class="column topic">
-			<div class="topicTitle borderBottom">
-				3.Rendimentos Tribut√°veis, Dedu√ß√µes e Imposto Retido na Fonte - VALORES EM REAIS
-			</div>
-
-			<div class="column topicContent">
-				<div class="row valueRow">
-					<div>
-						01 Total dos Rendimentos (inclusive f√©rias)
-					</div>
-					<div>
-						{{rendtrib.totalrend}}
-					</div>
-				</div>
-
-				<div class="row valueRow">
-					<div>
-						02 Contribui√ß√£o Previdenciaria Oficial
-					</div>
-					<div>
-						{{rendtrib.previdoficial}}
-					</div>
-				</div>
-
-				<div class="row valueRow">
-					<div>
-						03 Contribui√ß√£o Previd. Complem. p√∫blica ou privada e FAPI (Preencher quadro 7)
-					</div>
-					<div>
-						{{rendtrib.previdcomplem}}
-					</div>
-				</div>
-
-				<div class="row valueRow">
-					<div>
-						04 Pens√£o Aliment√≠cia (Preencher tamb√©m o quadro 7)
-					</div>
-					<div>
-						{{rendtrib.pensalim}}
-					</div>
-				</div>
-
-				<div class="row valueRow">
-					<div>
-						05 Imposto sobre a Renda Retido na Fonte
-					</div>
-					<div>
-						{{rendtrib.impostofonte}}
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="column topic">
-			<div class="topicTitle borderTop borderBottom">
-				4.Rendimentos Isentos e N√£o Tribut√°veis
-			</div>
-
-			<div class="column topicContent">
-				<div class="row valueRow">
-					<div>
-						01 Parc. Isenta, Aposent., Reserva, Reforma e Pens√£o (65 anos ou +)
-					</div>
-					<div>
-						{{rendisent.parcisenta}}
-					</div>
-				</div>
-				
-				<div class="row valueRow">
-					<div>
-						02 Di√°rias e Ajuda de Custo
-					</div>
-					<div>
-						{{rendisent.diarajudcust}}
-					</div>
-				</div>
-
-				<div class="row valueRow">
-					<div>
-						03 Prov. Pens√£o, Aposent, Reforma molestia grave, inval.permanente
-					</div>
-					<div>
-						{{rendisent.provpensao}}
-					</div>
-				</div>
-
-				<div class="row valueRow">
-					<div>
-						04 Lucro e divid.a partir 1996 pg p/ PJ (Lucro Real, Pres.Arbitr.)
-					</div>
-					<div>
-						{{rendisent.lucrodivid}}
-					</div>
-				</div>
-
-				<div class="row valueRow">
-					<div>
-						05 Valores S√≥cio Microempresa ou Peq.Porte exceto pro labore
-					</div>
-					<div>
-						{{rendisent.valsocmicro}}
-					</div>
-				</div>
-
-				<div class="row valueRow">
-					<div>
-						06 Indeniza√ß√µes rescis√£o de contrato de trabalho, PDV, Acid. Trabalho
-					</div>
-					<div>
-						{{rendisent.inderesc}}
-					</div>
-				</div>
-
-				<div class="row valueRow">
-					<div>
-						07 Outros (Especificar)
-					</div>
-					<div>
-						{{rendisent.outros}}
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="column topic">
-			<div class="topicTitle borderBottom borderTop">
-				5.Rendimentos Sujeitos a Tributa√ß√£o Exclusiva (Rend. L√≠quido)
-			</div>
-
-			<div class="column topicContent">
-				<div class="row valueRow">
-					<div>
-						01 D√©cimo Terceiro Sal√°rio
-					</div>
-					<div>
-						{{rendtribexcl.decimterc}}
-					</div>
-				</div>
-
-				<div class="row valueRow">
-					<div>
-						02 IRRF 13¬∫ Sal√°rio
-					</div>
-					<div>
-						{{rendtribexcl.irrfdecimterc}}
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="column topic">
-			<div class="topicTitle borderTop borderBottom">
-				6.Rendimentos Recebidos Acumuladamente- Art.12-A da Lei n¬∫7.713, de 1988 (sujeitos a trib. excl.)
-			</div>
-
-			<div class="column topicContent">
-				<div class="row valueRow">
-					<div>
-						6.1 Numero do Processo: {{rendrecebacu.numproc}}
-					</div>
-					<div>
-						Quantidade de meses:
-					</div>
-					<div>
-						{{rendrecebacu.quantmes}}
-					</div>
-				</div>
-
-				<div class="row valueRow">
-					<div>
-						Natureza do rendimento: {{rendrecebacu.natrend}}
-					</div>
-				</div>
-
-				<div class="row valueRow">
-					<div>
-						01 Total dos rendimentos tribut√°veis (inclusive f√©rias e 13¬∫ sal√°rio)
-					</div>
-					<div>
-						{{rendrecebacu.totalrendtrib}}
-					</div>
-				</div>
-
-				<div class="row valueRow">
-					<div>
-						02 Exclus√£o: Despesas com a a√ß√£o judicial
-					</div>
-					<div>
-						{{rendrecebacu.exclusao}}
-					</div>
-				</div>
-
-				<div class="row valueRow">
-					<div>
-						03 Dedu√ß√£o: Contribui√ß√£o previdenci√°ria oficial
-					</div>
-					<div>
-						{{rendrecebacu.deducaocontri}}
-					</div>
-				</div>
-
-				<div class="row valueRow">
-					<div>
-						04 Dedu√ß√£o: Pens√£o aliment√≠cia (Preencher tamb√©m o quadro 7)
-					</div>
-					<div>
-						{{rendrecebacu.deducaopensalim}}
-					</div>
-				</div>
-
-				<div class="row valueRow">
-					<div>
-						05 Imposto sobre a renda retido na fonte
-					</div>
-					<div>
-						{{rendrecebacu.impostorend}}
-					</div>
-				</div>
-
-				<div class="row valueRow">
-					<div>
-						06 Rendimentos isentos de pens√£o, proventos de aposentadoria ou reforma por <br> mol√©stia grave ou aposentadoria ou reforma por acidente em servi√ßo
-					</div>
-					<div>
-						{{rendrecebacu.rendisent}}
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="column" style="margin-top: 2mm;">
-			<div class="topicTitle borderTop borderBottom">
-				7.Informa√ß√µes Complementares
-			</div>
-
-			<div class="column topicContent">
-				{{<for infocomplement.benefs>}}
-					<div class="row valueRow" style="padding-left: 1mm;">
-						<div>
-							Benefici√°rio/CPF Pens√£o:
-						</div>
-						<div>
-							{{nomdep}}
-						</div>
-						<div>
-							{{cpfdep}}
-						</div>
-					</div>
-
-					<div id="{{cpfdep}}"></div>
-				{{</for infocomplement.benefs>}}
-
-				<div id="planosaude">
-					<div class="row valueRow">
-						<div>
-							Plano de Sa√∫de - Empresarial
-						</div>
-					</div>
-
-					<div class="row valueRow">
-						<div>
-							Operadora: {{infocomplement.planosaude.cgemp}} {{infocomplement.planosaude.nomemp}}
-						</div>
-					</div>
-
-					<div class="column" style="padding-left: 5mm;">
-						{{<for infocomplement.planosaude.deps>}}
-							<div class="row valueRow">
-								<div style="width: 65%;">
-									{{cpfdep}} {{nomdep}}
-								</div>
-								<div>
-									{{nasc}}
-								</div>
-								<div>
-									{{valpag}}
-								</div>
-							</div>
-						{{</for infocomplement.planosaude.deps>}}
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="column topic borderBottom" style="padding-bottom: 1mm;">
-			<div class="topicTitle borderTop borderBottom">
-				8.Respons√°vel pelas Informa√ß√µes
-			</div>
-
-			<div class="topicContent">
-				<div class="row valueRow">
-					<div>
-						Nome: GIULIANO FORNAZTER
-					</div>
-					<div>
-						Data: {{fevereiroultimodia}} Assinatura:
-					</div>
-					<div>†</div>
-					<div>†</div>
-				</div>
-
-				<div class="row valueRow">
-					<div>
-						Dispensada a assinatura de acordo com IN RFB 1.215/2011 art. 2.
-					</div>
-				</div>
-
-				<div class="row valueRow">
-					<div>
-						Aprovado pela IN. RFB n¬∫ 2.060, de 13 de dezembro de 2021
-					</div>
-				</div>
-			</div>
-		</div>
-	</body>
-	<script>
-		const benefs = {{infocomplement.benefs}};
-		
-		for (const benef of benefs) {
-			const div = document.getElementById(benef.cpfdep);
-			let html = "";
-			for (const val of benef.vals) {
-				html += `
-					<div class="row valueRow" style="padding-left: 3mm;">
-						<div>
-							${val.obsval}
-						</div>
-						<div>
-							${val.valpag}
-						</div>
-					</div>
-				`
-			}
-			div.innerHTML = html;
-		}
-	</script>
-	<script>
-		const div = document.getElementById("planosaude");
-		const planosaude = {{infocomplement.planosaude}};
-		if (planosaude.deps.length == 0) {
-			div.style.display = "none";
-		}
-	</script>
 </html>

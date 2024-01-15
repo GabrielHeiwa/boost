@@ -8,6 +8,9 @@
 			crossorigin="anonymous"
 		/>
 		<style>
+			body{
+				padding: 16px;
+			}
 			/* Tabela */
 
 			.tableContainer {
@@ -300,7 +303,7 @@
 					</thead>
 
 					<tbody>
-						{{<for paycheck.earnings>}}
+						{{#each paycheck.earnings}}
 							<tr>
 								<td class="rowCenterAligned">{{codeve}}</td>
 								<td>{{deseve}}</td>
@@ -308,9 +311,10 @@
 								<td class="rowRightAligned">{{valeve}}</td>
 								<td class="rowRightAligned"></td>
 							</tr>
-                		{{</for paycheck.earnings>}}
-
-						{{<for paycheck.discounts>}}
+							{{/each}}
+							
+							
+							{{#each paycheck.discounts}}
 							<tr>
 								<td class="rowCenterAligned">{{codeve}}</td>
 								<td>{{deseve}}</td>
@@ -318,7 +322,7 @@
 								<td class="rowRightAligned"></td>
 								<td class="rowRightAligned">{{valeve}}</td>
 							</tr>
-                		{{</for paycheck.discounts>}}
+							{{/each}}
 
 						<tr class="invisibleTableRow">
 							<td></td>
