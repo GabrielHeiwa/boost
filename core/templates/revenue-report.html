@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    @page {
+      height: 297mm;
+      width: 210mm;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11px;
+			padding: 16px;
+    }
+
+    .row {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .center {
+      justify-content: center;
+      align-items: center;
+    }
+
+    .valueRow {
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .topic {
+      margin-top: 2mm;
+    }
+
+    .topicTitle {
+      padding-bottom: 1mm;
+      padding-top: 1mm;
+    }
+
+    .borderTop {
+      border-top: 2px solid black;
+    }
+
+    .borderBottom {
+      border-bottom: 2px solid black;
+    }
+
+    .topicContent {
+      padding-top: 1.5mm;
+      gap: 0.5mm;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="row" style="border: 1px solid black; text-align: center;">
+    <div class="column center" style="width: 15%;">
+      <img style="max-width: 100%;" src="https://www.gov.br/fazenda/pt-br/assuntos/noticias/2013/novembro/brasao-da-republica/@@images/image" alt="brasão da república" height="50" width="50">
+    </div>
+
+    <div class="column" style="width: 45%; border-right: 1px solid black; padding-top: 1.5mm; padding-bottom: 1.5mm; justify-content: space-between; align-items: center;">
+      <div>
+        MINISTÉRIO DA FAZENDA
+      </div>
+      <div>
+        Secretaria Da Receita Federal Do Brasil
+      </div>
+      <div>
+        Imposto sobre a Renda da Pessoa Física
+      </div>
+      <div>
+        Exercício de {{anoatual}}
+      </div>
+    </div>
+
+    <div class="column center" style="width: 40%; padding-top: 2mm; padding-bottom: 1.5mm; justify-content: space-between; align-items: center; padding-left: 5mm; padding-right: 5mm;">
+      <div>
+        Comprovante de Rendimento Pagos e de <br> Imposto sobre a Renda Retido na Fonte
+      </div>
+      <div>
+        Ano-Calendário de {{ano}}
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align: justify; padding-left: 8mm; padding-right: 8mm; padding-top: 2mm;">
+    Verifique as condições e o prazo para apresentação da Declaração do Imposto sobre a Renda da Pessoa Física para este ano-calendário no sítio da Secretária da Receita Federal do Brasil na Internet, no endereço &lt;www.receita.fazenda.gov.br&gt;
+  </div>
+
+  <div class="column topic">
+    <div class="topicTitle borderBottom">
+      1.Fonte Pagadora Pessoa Jurídica ou Pessoa Física
+    </div>
+
+    <div class="row topicContent">
+      <div class="column" style="width: 23mm; align-items: flex-end; gap: 0.5mm;">
+        <div>
+          CNPJ/CPF:
+        </div>
+        <div>
+          Nome Empr:
+        </div>
+        <div>
+          Endereço:
+        </div>
+        <div>
+          Bairro:
+        </div>
+      </div>
+
+      <div class="column" style="width: 60mm; align-items: flex-start; margin-left: 5mm; gap: 0.5mm;">
+        <div>
+          {{cgemp}}
+        </div>
+        <div>
+          {{nomemp}}
+        </div>
+        <div>
+          {{endemp}}
+        </div>
+        <div>
+          {{baiemp}}
+        </div>
+      </div>
+
+      <div class="column" style="width: 50mm; justify-content: space-between; margin-left: 5mm;">
+        <div>
+          Fone: {{fonemp}}
+        </div>
+
+        <div>
+          Cidade: {{cidemp}}
+        </div>
+      </div>
+
+      <div class="column" style="justify-content: flex-end; margin-left: 5mm;">
+        <div>
+          UF: {{ufeemp}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="column topic">
+    <div class="topicTitle borderBottom">
+      2.Pessoa Física Beneficiária dos Rendimentos
+    </div>
+
+    <div class="column topicContent">
+      <div class="row">
+        Local: {{codloc}}
+      </div>
+
+      <div class="row" style="gap: 20mm;">
+        <div>
+          CPF: {{numcpf}}
+        </div>
+        <div>
+          Cadastro: {{numcad}}
+        </div>
+      </div>
+
+      <div class="row">
+        Beneficiário: {{nomfun}}
+      </div>
+
+      <div class="row">
+        Natureza do Rendimento: {{natren}}
+      </div>
+    </div>
+  </div>
+
+  <div class="column topic">
+    <div class="topicTitle borderBottom">
+      3.Rendimentos Tributáveis, Deduções e Imposto Retido na Fonte - VALORES EM REAIS
+    </div>
+
+    <div class="column topicContent">
+      <div class="row valueRow">
+        <div>
+          01 Total dos Rendimentos (inclusive férias)
+        </div>
+        <div>
+          {{rendtrib.totalrend}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          02 Contribuição Previdenciaria Oficial
+        </div>
+        <div>
+          {{rendtrib.previdoficial}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          03 Contribuição Previd. Complem. pública ou privada e FAPI (Preencher quadro 7)
+        </div>
+        <div>
+          {{rendtrib.previdcomplem}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          04 Pensão Alimentícia (Preencher também o quadro 7)
+        </div>
+        <div>
+          {{rendtrib.pensalim}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          05 Imposto sobre a Renda Retido na Fonte
+        </div>
+        <div>
+          {{rendtrib.impostofonte}}
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="column topic">
+    <div class="topicTitle borderTop borderBottom">
+      4.Rendimentos Isentos e Não Tributáveis
+    </div>
+
+    <div class="column topicContent">
+      <div class="row valueRow">
+        <div>
+          01 Parc. Isenta, Aposent., Reserva, Reforma e Pensão (65 anos ou +)
+        </div>
+        <div>
+          {{rendisent.parcisenta}}
+        </div>
+      </div>
+      
+      <div class="row valueRow">
+        <div>
+          02 Diárias e Ajuda de Custo
+        </div>
+        <div>
+          {{rendisent.diarajudcust}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          03 Prov. Pensão, Aposent, Reforma molestia grave, inval.permanente
+        </div>
+        <div>
+          {{rendisent.provpensao}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          04 Lucro e divid.a partir 1996 pg p/ PJ (Lucro Real, Pres.Arbitr.)
+        </div>
+        <div>
+          {{rendisent.lucrodivid}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          05 Valores Sócio Microempresa ou Peq.Porte exceto pro labore
+        </div>
+        <div>
+          {{rendisent.valsocmicro}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          06 Indenizações rescisão de contrato de trabalho, PDV, Acid. Trabalho
+        </div>
+        <div>
+          {{rendisent.inderesc}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          07 Outros (Especificar)
+        </div>
+        <div>
+          {{rendisent.outros}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="column topic">
+    <div class="topicTitle borderBottom borderTop">
+      5.Rendimentos Sujeitos a Tributação Exclusiva (Rend. Líquido)
+    </div>
+
+    <div class="column topicContent">
+      <div class="row valueRow">
+        <div>
+          01 Décimo Terceiro Salário
+        </div>
+        <div>
+          {{rendtribexcl.decimterc}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          02 IRRF 13º Salário
+        </div>
+        <div>
+          {{rendtribexcl.irrfdecimterc}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="column topic">
+    <div class="topicTitle borderTop borderBottom">
+      6.Rendimentos Recebidos Acumuladamente- Art.12-A da Lei nº7.713, de 1988 (sujeitos a trib. excl.)
+    </div>
+
+    <div class="column topicContent">
+      <div class="row valueRow">
+        <div>
+          6.1 Numero do Processo: {{rendrecebacu.numproc}}
+        </div>
+        <div>
+          Quantidade de meses:
+        </div>
+        <div>
+          {{rendrecebacu.quantmes}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          Natureza do rendimento: {{rendrecebacu.natrend}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          01 Total dos rendimentos tributáveis (inclusive férias e 13º salário)
+        </div>
+        <div>
+          {{rendrecebacu.totalrendtrib}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          02 Exclusão: Despesas com a ação judicial
+        </div>
+        <div>
+          {{rendrecebacu.exclusao}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          03 Dedução: Contribuição previdenciária oficial
+        </div>
+        <div>
+          {{rendrecebacu.deducaocontri}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          04 Dedução: Pensão alimentícia (Preencher também o quadro 7)
+        </div>
+        <div>
+          {{rendrecebacu.deducaopensalim}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          05 Imposto sobre a renda retido na fonte
+        </div>
+        <div>
+          {{rendrecebacu.impostorend}}
+        </div>
+      </div>
+
+      <div class="row valueRow">
+        <div>
+          06 Rendimentos isentos de pensão, proventos de aposentadoria ou reforma por <br> moléstia grave ou aposentadoria ou reforma por acidente em serviço
+        </div>
+        <div>
+          {{rendrecebacu.rendisent}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="column" style="margin-top: 2mm;">
+    <div class="topicTitle borderTop borderBottom">
+      7.Informações Complementares
+    </div>
+
+    <div class="column topicContent">
+      {{#each infocomplement.benefs}}
+        <div class="row valueRow" style="padding-left: 1mm;">
+          <div>
+            Beneficiário/CPF Pensão:
+          </div>
+          <div>
+            {{nomdep}}
+          </div>
+          <div>
+            {{cpfdep}}
+          </div>
+        </div>
+
+        <div>
+          {{#each benef.vals}}
+            <div class="row valueRow" style="padding-left: 3mm;">
+              <div>
+                {{obsval}}
+              </div>
+              <div>
+                {{valpag}}
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      {{/each}}
+
+      <div>
+        {{#if infocomplement.planosaude.deps.length}}
+          <div class="row valueRow">
+            <div>
+              Plano de Saúde - Empresarial
+            </div>
+          </div>
+
+          <div class="row valueRow">
+            <div>
+              Operadora: {{infocomplement.planosaude.cgemp}} {{infocomplement.planosaude.nomemp}}
+            </div>
+          </div>
+
+          <div class="column" style="padding-left: 5mm;">
+            {{#each infocomplement.planosaude.deps as |dep|}}
+              <div class="row valueRow">
+                <div style="width: 65%;">
+                  {{dep.cpfdep}} {{dep.nomdep}}
+                </div>
+                <div>
+                  {{dep.nasc}}
+                </div>
+                <div>
+                  {{dep.valpag}}
+                </div>
+              </div>
+            {{/each}}
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+
+  <div class="column topic borderBottom" style="padding-bottom: 1mm;">
+		<div class="topicTitle borderTop borderBottom">
+			8.Responsável pelas Informações
+		</div>
+
+		<div class="topicContent">
+			<div class="row valueRow">
+				<div>
+					Nome: GIULIANO FORNAZTER
+				</div>
+				<div>
+					Data: {{fevereiroultimodia}} Assinatura:
+				</div>
+				<div>?</div>
+				<div>?</div>
+			</div>
+
+			<div class="row valueRow">
+				<div>
+					Dispensada a assinatura de acordo com IN RFB 1.215/2011 art. 2.
+				</div>
+			</div>
+
+			<div class="row valueRow">
+				<div>
+					Aprovado pela IN. RFB nº 2.060, de 13 de dezembro de 2021
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -2,7 +2,6 @@
 import { Router } from "express";
 import { GetVersionUseCase } from "./useCases/getVersionUseCase";
 import { generateReportPDFUseCase } from "./useCases/generateReportPDF";
-import { midlewareTemplateFile } from "./config/multer";
 
 const routes = Router();
 
@@ -13,6 +12,6 @@ const generateReportPDF = new generateReportPDFUseCase();
 routes.get("/", getVersion.execute);
 
 // POST ROUTES
-routes.post("/generate", midlewareTemplateFile, generateReportPDF.execute);
+routes.post("/generate", generateReportPDF.execute);
 
 export { routes };

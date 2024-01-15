@@ -1,0 +1,323 @@
+<html>
+    <head>
+        <title>Template - Treinamento</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous"
+        />
+        <style>
+            body{
+                padding: 16px;
+            }
+
+            .header {
+                width: 100%;
+                height: 100px;
+                border: solid 1px black;
+                display: flex;
+                padding: 5px 10px 5px 5px;
+                flex-direction: column;
+            }
+
+            .headerRow {
+                width: 100%;
+                height: 30px;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .header h3 {
+                font-weight: bold;
+                align-self: center;
+                justify-self: center;
+            }
+
+            .headerText {
+                font-weight: bold;
+            }
+
+            .headerText span {
+                padding-left: 15px;
+            }
+
+            .mainDiv {
+                width: 100%;
+                height: 80%;
+            }
+
+            .generalInformationDiv {
+                width: 100%;
+                display: flex;
+                padding-top: 10px;
+            }
+
+            .generalInformationFirstDiv {
+                width: 65vw;
+                padding: 0 !important;
+            }
+
+            .generalInformationSecondDiv {
+                width: 35vw;
+            }
+
+            .generalInformationDiv span {
+                line-break: auto;
+                font-size: 15px;
+            }
+
+            .generalInformationRow {
+                width: 100%;
+                display: block;
+            }
+
+            .generalInformationFirstDiv .generalInformationLabel {
+                display: inline-block;
+                font-weight: bold;
+                width: 110px;
+                text-align: right;
+            }
+
+            .generalInformationSecondDiv .generalInformationLabel {
+                display: inline-block;
+                font-weight: bold;
+                width: 90px;
+                text-align: right;
+            }
+
+            .generalInformationNumbers {
+                width: 95%;
+                display: inline-block;
+                width: 60px;
+                text-align: right;
+            }
+
+            .otherInformationDiv {
+                width: 95%;
+                margin-top: 80px;
+                display: flex;
+            }
+
+            .otherInformationFirstDiv {
+                width: 70vw;
+                display: flex;
+                gap: 20px;
+            }
+
+            .otherInformationSecondDiv {
+                width: 30vw;
+                display: flex;
+                justify-content: flex-end;
+                gap: 10px;
+            }
+
+            .firstColumn , .secondColumn {              
+                display: flex;
+                flex-direction: column;
+                font-size: 15px;
+            }
+
+            .eventsTable {
+                width: 95vw;
+                margin-top: 80px;
+            }
+
+            .eventsTable th {
+                font-weight: bold;
+            }
+
+            .eventsTable thead tr th:first-child, .eventsTable tbody tr td:first-child{
+                width: 50px;
+                text-align: center;
+            }
+
+            .eventsTable thead tr th:nth-child(2), .eventsTable tbody tr td:nth-child(2) {
+                padding-left: 50px;
+            }
+
+            .eventsTable thead tr th:nth-child(3), .eventsTable tbody tr td:nth-child(3) {
+                text-align: right;
+            }
+
+            .eventsTable thead tr th:nth-child(4), .eventsTable tbody tr td:nth-child(4) {
+                padding-left: 20px;
+                text-align: right;
+            }
+
+            .eventsTable thead tr th:nth-child(5), .eventsTable tbody tr td:nth-child(5) {
+                padding-left: 20px;
+                text-align: right;
+            }
+
+            .eventsTable .divTotals {
+                text-align: left;
+                font-weight: bold;
+            }
+
+            .font-bold {
+                font-weight: bold;
+            }
+
+            .confirmationPhraseDiv {
+                width: 95vw;
+                margin-top: 80px;
+            }
+
+            .confirmationPhraseDiv p {
+                font-weight: bold;
+                font-size: 16px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="header">
+            <div class="headerRow">
+                <p class="headerText">
+                    {{receipt.numemp}} - {{receipt.razsoc}}
+                </p>
+                <p class="headerText">Pag..: <span>1</span></p>
+            </div>
+
+            <h3>Recibo de Férias</h3>
+        </div>
+
+        <div class="mainDiv">
+            <!-- Informações gerais -->
+            <div class="generalInformationDiv">
+                <div class="generalInformationFirstDiv">
+                    <div class="generalInformationRow">
+                        <span class="generalInformationLabel">Empresa: </span>
+                        <span>{{receipt.razsoc}}</span>
+                    </div>
+
+                    <div class="generalInformationRow">
+                        <span class="generalInformationLabel">Cadastro:</span>
+                        <span class="generalInformationNumbers">
+                            {{receipt.numcad}}
+                        </span>
+                        <span>- {{receipt.nomfun}}</span>
+                    </div>
+
+                    <div class="generalInformationRow">
+                        <span class="generalInformationLabel">Cargo: </span>
+                        <span class="generalInformationNumbers"
+                            >{{receipt.codcar}}
+                        </span>
+                        <span>- {{receipt.titred}}</span>
+                    </div>
+
+                    <div class="generalInformationRow">
+                        <span class="generalInformationLabel"
+                            >Depend. IR:
+                        </span>
+                        <span class="generalInformationNumbers">{{receipt.dependIR}}</span>
+                    </div>
+                </div>
+
+                <div class="generalInformationSecondDiv">
+                    <div class="generalInformationRow">
+                        <span class="generalInformationLabel">CNPJ:</span>
+                        <span id="cnpj">{{receipt.numcgc}}</span>
+                    </div>
+
+                    <div class="generalInformationRow">
+                        <span class="generalInformationLabel">CPF:</span>
+                        <span>{{receipt.numcpf}}</span>
+                    </div>
+
+                    <div class="generalInformationRow">
+                        <span class="generalInformationLabel">Lotação:</span>
+                        <span>{{receipt.codlot}} {{receipt.nomlot}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Outras informações -->
+            <div class="otherInformationDiv">
+                <div class="otherInformationFirstDiv">
+                    <div class="firstColumn">
+                        <span>Período Aquisitivo.....</span>
+                        <span>Período das Férias.....</span>
+                        <span>Retorno ao Trabalho....</span>
+                        <span>Pagameno do Recibo.....</span>
+                        <span>Salário Base...........</span>
+                    </div>
+
+                    <div class="secondColumn">
+                        <span>{{receipt.iniper}} a {{receipt.fimper}}</span>
+                        <span>{{receipt.inifer}} a {{receipt.fimfer}}</span>
+                        <span>{{receipt.rettra}}</span>
+                        <span>{{receipt.datpag}}</span>
+                        <span>{{receipt.salbas}}</span>
+                    </div>
+                </div>
+
+                <div class="otherInformationSecondDiv">
+                    <div class="firstColumn">
+                        <span>Número CTPS:</span>
+                        <span>Série CTPS..</span>
+                        <span>Dias Férias.</span>
+                        <span>Dias abono..</span>
+                        <span>Dias licença</span>
+                    </div>
+
+                    <div class="secondColumn">
+                        <span>{{receipt.numctp}}</span>
+                        <span>{{receipt.serctp}} - {{receipt.estctp}}</span>
+                        <span>{{receipt.diafer}}</span>
+                        <span>{{receipt.diaabo}}</span>
+                        <span>{{receipt.dialic}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabela dos eventos e descontos -->
+            <table class="eventsTable">
+                <thead>
+                    <tr>
+                        <th>Eventos</th>
+                        <th>Descrição</th>
+                        <th>Referência</th>
+                        <th>Proventos</th>
+                        <th>Descontos</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {{#each receipt.eventos}}
+                        <tr>
+                            <td>{{codeve}}</td>
+                            <td>{{deseve}}</td>
+                            <td>{{refeve}}</td>
+                            <td>{{proceed}}</td>
+                            <td>{{discount}}</td>
+                        </tr>
+                    {{/each}}
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td class="divTotals">Totais..........:</td>
+                        <td class="font-bold">{{receipt.total}}</td>
+                        <td class="font-bold">{{receipt.total_desconto}}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td class="divTotals">Líquido.......:</td>
+                        <td class="font-bold">{{receipt.liquido}}</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Frase de confirmação -->
+            <div class="confirmationPhraseDiv">
+                <p>
+                    Recebi a importância de {{receipt.liquido}} ({{receipt.liquido_extenso}}) referente a quitação das férias.
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
